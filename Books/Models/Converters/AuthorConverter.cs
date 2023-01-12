@@ -11,8 +11,7 @@ namespace Books.Models.Converters
             {
                 Id = model.Id,
                 BirthDate = model.BirthDate,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
+                Name = model.FirstName + " " + model.LastName,
                 Gender = model.Gender
             };
         }
@@ -28,12 +27,15 @@ namespace Books.Models.Converters
 
         public static Author ToDao(this AuthorDto model) 
         {
+            var firstName = model.Name.Split(' ')[0];
+            var lastName = model.Name.Split(' ')[1];
+
             return new Author
             {
                 Id = model.Id,
                 BirthDate = model.BirthDate,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
+                FirstName = firstName,
+                LastName = lastName,
                 Gender = model.Gender
             };
         }
