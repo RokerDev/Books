@@ -9,9 +9,11 @@ namespace Books.Models
         {
             _context = context;
             Author = new AuthorRepository(context);
+            Book = new BookRepository(context);
         }
 
         public AuthorRepository Author { get; set; }
+        public BookRepository Book { get; set; }
 
         public void Complete()
         {
