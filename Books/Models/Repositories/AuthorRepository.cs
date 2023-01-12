@@ -22,9 +22,17 @@ namespace Books.Models.Repositories
             return _context.Authors;
         }
 
-        public Author GetAuthor(string name)
+        public Author Get(string name) 
         {
-
+            var firstName = name.Split(' ')[0];
+            var lastName = name.Split(' ')[1];
+            return _context.Authors.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
         }
+
+        public void Add(Author author)
+        {
+            _context.Authors.Add(author);
+        }
+
     }
 }
