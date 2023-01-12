@@ -7,6 +7,6 @@
             Errors = new List<Error>();
         }
         public bool IsSuccess => Errors == null || !Errors.Any();
-        public IEnumerable<Error> Errors { get; set; }
+        public List<Error> Errors { get; set; }
     }
 }
