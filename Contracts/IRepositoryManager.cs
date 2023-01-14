@@ -10,6 +10,7 @@ namespace Contracts
     {
         IAuthorRepository Author { get; }
         IBookAuthorRepository BookAuthor { get; }
-        IBookRepository Book { get; }   
+        IBookRepository Book { get; }
+        void Complete();
     }
 }

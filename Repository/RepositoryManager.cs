@@ -1,11 +1,9 @@
-﻿using Books.Models.Repositories;
-
-namespace Books.Models
+﻿namespace Repository
 {
-    public class UnitOfWork
+    public class RepositoryManager
     {
         private BooksContext _context;
-        public UnitOfWork(BooksContext context)
+        public RepositoryManager(BooksContext context)
         {
             _context = context;
             Author = new AuthorRepository(context);
