@@ -43,7 +43,7 @@ namespace Books.Extenstions
         public static void ConfigureSqlContext(this IServiceCollection services,
             IConfiguration configuration) =>
             services.AddDbContext<BooksContext>(opts =>
-            opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+            opts.UseSqlServer(configuration.GetConnectionString("BooksContext")));
 
 
     }

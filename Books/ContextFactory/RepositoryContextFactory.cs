@@ -18,8 +18,7 @@ namespace Books.ContextFactory
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json").Build();
             var builder = new DbContextOptionsBuilder<BooksContext>()
-            .UseSqlServer(configuration.GetConnectionString("sqlConnection"), 
-            b => b.MigrationsAssembly("Books"));
+            .UseSqlServer(configuration.GetConnectionString("sqlConnection"));
             return new BooksContext(builder.Options);
         }
     }

@@ -15,10 +15,10 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddApplicationPart(typeof(Books.Presentation.AssemblyReference).Assembly);
 
-builder.Services.AddDbContext<BooksContext>(
-        options => options.UseSqlServer("name=ConnectionStrings:BooksContext"));
+
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
