@@ -1,7 +1,6 @@
-﻿using Books.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-
+using Repository;
 
 namespace Books.ContextFactory
 {
