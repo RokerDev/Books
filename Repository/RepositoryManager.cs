@@ -2,7 +2,7 @@
 
 namespace Repository
 {
-    public class RepositoryManager : IRepositoryManager
+    public sealed class RepositoryManager : IRepositoryManager
     {
         private readonly BooksContext _context;
         private readonly Lazy<IAuthorRepository> _authorRepository;
