@@ -1,13 +1,14 @@
-﻿using Books.Models.Domains;
-using Microsoft.AspNetCore.Mvc;
+﻿using Contracts;
+using Entities.Models;
 
-namespace Books.Models.Repositories
+namespace Repository
 {
-    public class AuthorRepository
+    public class AuthorRepository : RepositoryBase<Author>, IAuthorRepository
     {
         private readonly BooksContext _context;
 
         public AuthorRepository(BooksContext context)
+            : base(context)
         {
             _context= context;
         }

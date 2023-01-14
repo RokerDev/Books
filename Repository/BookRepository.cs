@@ -1,11 +1,13 @@
-﻿using Books.Models.Domains;
+﻿using Contracts;
+using Entities.Models;
 
-namespace Books.Models.Repositories
+namespace Repository
 {
-    public class BookRepository
+    public class BookRepository: RepositoryBase<Book>, IBookRepository
     {
         private BooksContext _context;
         public BookRepository(BooksContext context)
+            : base(context)
         {
             _context= context;
         }
