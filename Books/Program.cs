@@ -1,7 +1,7 @@
 using Books.Extenstions;
-using Books.Models;
 using Microsoft.EntityFrameworkCore;
 using NLog;
+using Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,7 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 
-builder.Services.AddScoped<UnitOfWork, UnitOfWork>();
+builder.Services.ConfigureRepositoryManager();
 
 builder.Services.AddControllers();
 
