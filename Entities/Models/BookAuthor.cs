@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Entities.Models
+namespace Books.Models.Domains;
+
+public partial class BookAuthor
 {
-    public class BookAuthor
-    {
-        public int BookId { get; set; }
+    public int Id { get; set; }
 
-        public int AuthorId { get; set; }
+    public int BookId { get; set; }
 
+    public int AuthorId { get; set; }
 
+    
 
-        public ICollection<Author> Author { get; set; } = null!;
+    public virtual Author Author { get; set; } = null!;
 
-        public ICollection<Book> Book { get; set; } = null!;
-    }
+    public virtual Book Book { get; set; } = null!;
 }

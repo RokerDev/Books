@@ -1,30 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Entities.Models
+namespace Books.Models.Domains;
+
+public partial class Author
 {
-    public class Author
-    {
-        [Column("AuthorId")]
-        public Guid Id { get; set; }
+    public int Id { get; set; }
 
-        [Required(ErrorMessage = "First Name name is a required field.")]
-        [MaxLength(50, ErrorMessage = "Maximum length for the Name is 50 characters.")]
-        public string? FirstName { get; set; }
+    public string FirstName { get; set; } = null!;
 
-        [Required(ErrorMessage = "Last Name is a required field.")]
-        [MaxLength(60, ErrorMessage = "Maximum length for the Address is 50 characters")]
-        public string? LastName { get; set; }
+    public string LastName { get; set; } = null!;
 
-        [Required(ErrorMessage = "Birth Date is a required field.")]
-        public DateTime BirthDate { get; set; }
+    public DateTime BirthDate { get; set; }
 
-        public ICollection<Book>? Employees { get; set; }
+    public bool Gender { get; set; }
 
-    }
+    public virtual ICollection<BookAuthor> BookAuthors { get; } = new List<BookAuthor>();
 }

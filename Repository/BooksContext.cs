@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Books.Models.Domains;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Books.Models;
+namespace Repository;
 
 public partial class BooksContext : DbContext
 {
