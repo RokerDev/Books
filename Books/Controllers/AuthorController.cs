@@ -2,6 +2,7 @@
 using Books.Models.Converters;
 using Books.Models.Dtos;
 using Books.Models.Response;
+using Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +12,12 @@ namespace Books.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
+        private ILoggerManager _logger;
         private UnitOfWork _unitOfWork;
-        public AuthorController(UnitOfWork unitOfWork)
+        public AuthorController(UnitOfWork unitOfWork, ILoggerManager logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         [HttpGet]
