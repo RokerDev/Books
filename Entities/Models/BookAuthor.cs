@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Entities.Models;
 
-public partial class BookAuthor
+public partial class BookAuthor 
 {
     public int Id { get; set; }
 
