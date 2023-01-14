@@ -1,9 +1,9 @@
-﻿using Entities.Models;
+﻿using Shared.DataTransferObjects;
 
 namespace Service.Contracts
 {
     public interface IAuthorService
     {
-        IEnumerable<Author> GetAllAuthors(bool trackChanges);
+        IEnumerable<AuthorDto> GetAllAuthors(bool trackChanges);
     }
 }
