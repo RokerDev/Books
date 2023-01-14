@@ -24,7 +24,7 @@ namespace Entities.Models
         [Required(ErrorMessage = "Birth Date is a required field.")]
         public DateTime BirthDate { get; set; }
 
-        public ICollection<Employee>? Employees { get; set; }
+        public ICollection<Book>? Employees { get; set; }
 
     }
 }
