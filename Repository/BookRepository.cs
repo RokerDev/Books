@@ -12,6 +12,9 @@ namespace Repository
             _context= context;
         }
 
+        public void CreateBook(Book book) => Create(book);
+
+
         public IEnumerable<Book> GetAllBooks(bool trackChanges) => 
             FindAll(trackChanges)
             .OrderBy(x => x.Title).ToList();

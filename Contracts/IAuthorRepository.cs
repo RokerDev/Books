@@ -11,5 +11,6 @@ namespace Contracts
     {
         IEnumerable<Author> GetAllAuthors(bool trackChanges);
         Author GetAuthor(int id, bool trackChanges);
+        void CreateAuthor(Author author);
     }
 }

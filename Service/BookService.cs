@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.Exceptions;
+using Entities.Models;
 using Service.Contracts;
 using Service.Converters;
 using Shared.DataTransferObjects;
@@ -21,6 +22,15 @@ namespace Service
             _logger = logger;
             _mapper = mapper;
 
+        }
+
+        public BookDto CreateBook(BookForCreationDto book)
+        {
+            var bookEntity = _mapper.Map<Book>(book);
+            _repository.Book.CreateBook(bookEntity);
+            _repository.Complete();
+            var bookDto = _mapper.Map<BookDto>(bookEntity);
+            return bookDto;
         }
 
         public IEnumerable<BookDto> GetAllBooks(bool trackChanges)

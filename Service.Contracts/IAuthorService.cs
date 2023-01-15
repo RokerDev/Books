@@ -6,5 +6,6 @@ namespace Service.Contracts
     {
         IEnumerable<AuthorDto> GetAllAuthors(bool trackChanges);
         AuthorDto GetAuthor(int id, bool trackChanges);
+        AuthorDto CreateAuthor(AuthorForCreationDto author);
     }
 }

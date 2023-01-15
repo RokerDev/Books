@@ -4,6 +4,7 @@ using Repository;
 using Service.Contracts;
 using Service;
 using Microsoft.EntityFrameworkCore;
+using CompanyEmployees;
 
 namespace Books.Extenstions
 {
@@ -44,6 +45,9 @@ namespace Books.Extenstions
             IConfiguration configuration) =>
             services.AddDbContext<BooksContext>(opts =>
             opts.UseSqlServer(configuration.GetConnectionString("BooksContext")));
+
+        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
+            builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
 
 
     }

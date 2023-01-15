@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,23 @@ namespace Books.Presentation.Controllers
             return Ok(books);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name ="GetBookById")]
         public IActionResult GetBooks(int id)
         {
             var book = _service.BookService.GetBook(id, trackChanges: false);
 
             return Ok(book);
         }
+
+        [HttpPost]
+        public IActionResult CreateBook([FromBody]BookForCreationDto book)
+        {
+            if (book is null)
+                return BadRequest("BookForCreation object is null");
+            var bookToReturn = _service.BookService.CreateBook(book);
+            return CreatedAtRoute("GetBookById", new { id = bookToReturn.Id }, bookToReturn);
+        }
+
 
     }
 

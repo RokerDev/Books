@@ -14,11 +14,13 @@ namespace Repository
             _context= context;
         }
 
+        public void CreateAuthor(Author author) => Create(author);
+
         public IEnumerable<Author> GetAllAuthors(bool trackChanges) => FindAll(trackChanges)
             .OrderBy(c => c.LastName)
             .ToList();
 
         public Author GetAuthor(int id, bool trackChanges) => 
-            FindByCondition(c => c.Id.Equals(id), trackChanges).FirstOrDefault();
+            FindByCondition(c => c.Id.Equals(id), trackChanges).SingleOrDefault();
     }
 }

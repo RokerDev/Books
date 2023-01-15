@@ -1,5 +1,6 @@
 using Books.Extenstions;
 using Contracts;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using Repository;
@@ -16,7 +17,10 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddControllers().AddApplicationPart(typeof(Books.Presentation.AssemblyReference).Assembly);
+
+
+builder.Services.AddControllers()
+.AddApplicationPart(typeof(Books.Presentation.AssemblyReference).Assembly);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

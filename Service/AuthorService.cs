@@ -22,7 +22,14 @@ namespace Service
 
         }
 
-
+        public AuthorDto CreateAuthor(AuthorForCreationDto author)
+        {
+            var authorEntity = _mapper.Map<Author>(author);
+            _repository.Author.CreateAuthor(authorEntity);
+            _repository.Complete();
+            var authorToReturn = _mapper.Map<AuthorDto>(authorEntity);
+            return authorToReturn;
+        }
 
         public IEnumerable<AuthorDto> GetAllAuthors(bool trackChanges)
         {
@@ -38,7 +45,7 @@ namespace Service
             if (author is null)
                 throw new AuthorNotFoundException(id);
 
-            var authorDto = author.ToDto(); 
+            var authorDto = _mapper.Map<AuthorDto>(author);
             return authorDto;
         }
         
