@@ -14,6 +14,8 @@ namespace Repository
 
         public void CreateBook(Book book) => Create(book);
 
+        public void DeleteBook(Book book) => Delete(book);
+
 
         public IEnumerable<Book> GetAllBooks(bool trackChanges) => 
             FindAll(trackChanges)

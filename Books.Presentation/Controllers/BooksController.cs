@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entities.Models;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 using System;
@@ -39,6 +40,22 @@ namespace Books.Presentation.Controllers
                 return BadRequest("BookForCreation object is null");
             var bookToReturn = _service.BookService.CreateBook(book);
             return CreatedAtRoute("GetBookById", new { id = bookToReturn.Id }, bookToReturn);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteEmployeeForCompany(int id)
+        {
+            _service.BookService.DeleteBook(id, trackChanges: false);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateBook(int id, [FromBody] BookForUpdateDto book)
+        {
+            if (book is null)
+                return BadRequest("EmployeeForUpdateDto object is null");
+            _service.BookService.UpdateBook(id, book, trackChanges: true);
+            return NoContent();
         }
 
 

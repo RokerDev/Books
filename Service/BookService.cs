@@ -33,6 +33,15 @@ namespace Service
             return bookDto;
         }
 
+        public void DeleteBook(int id, bool trackChanges)
+        {
+            var bookToDelete = _repository.Book.GetBook(id, trackChanges);
+            if (bookToDelete == null) 
+                throw new BookNotFoundException(id);
+            _repository.Book.DeleteBook(bookToDelete);
+            _repository.Complete();
+        }
+
         public IEnumerable<BookDto> GetAllBooks(bool trackChanges)
         {
             var books = _repository.Book.GetAllBooks(trackChanges);
@@ -47,6 +56,16 @@ namespace Service
                 throw new BookNotFoundException(id);
 
             return book.ToDto();
+        }
+
+        public void UpdateBook(int id, BookForUpdateDto bookForUpdate, bool trackChanges)
+        {
+            var bookEntity = _repository.Book.GetBook(id, trackChanges);
+            if (bookEntity == null)
+                throw new BookNotFoundException(id);
+
+            _mapper.Map(bookForUpdate, bookEntity);
+            _repository.Complete();
         }
     }
 }
