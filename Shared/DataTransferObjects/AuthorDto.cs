@@ -1,13 +1,13 @@
 ﻿namespace Shared.DataTransferObjects
 {
-    public class AuthorDto
+    public record AuthorDto
     {
-        public int Id { get; set; }
-        public string? FullName { get; set; }
+        public int Id { get; init; }
+        public string? FullName { get; init; }
 
-        public DateTime BirthDay { get; set; }
+        public DateTime BirthDay { get; init; }
 
-        public bool Gender { get; set; }
+        public bool Gender { get; init; }
 
     }
 }
