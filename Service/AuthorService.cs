@@ -28,7 +28,7 @@ namespace Service
         {
             var author = _repository.Author.GetAuthor(id, trackChanges);
             if (author is null)
-                throw new CompanyNotFoundException(id);
+                throw new AuthorNotFoundException(id);
 
             var authorDto = author.ToDto(); 
             return authorDto;
