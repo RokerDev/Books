@@ -18,10 +18,6 @@ namespace Service.Converters
 
         public static IEnumerable<AuthorDto> ToDtos(this IEnumerable<Author> model) 
         {
-            if (model == null)
-            {
-                return Enumerable.Empty<AuthorDto>();
-            }
             return model.Select(x => x.ToDto());
         }
 

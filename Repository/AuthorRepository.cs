@@ -19,6 +19,6 @@ namespace Repository
             .ToList();
 
         public Author GetAuthor(int id, bool trackChanges) => 
-            FindByCondition(c => c.Id.Equals(id), trackChanges).Single();
+            FindByCondition(c => c.Id.Equals(id), trackChanges).FirstOrDefault();
     }
 }

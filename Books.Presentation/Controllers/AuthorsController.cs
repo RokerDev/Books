@@ -21,8 +21,8 @@ namespace Books.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAuthor(int id) 
         {
-            var company = _service.AuthorService.GetAuthor(id, trackChanges: false);
-            return Ok(company);
+            var author = _service.AuthorService.GetAuthor(id, trackChanges: false);
+            return Ok(author);
         }
 
     }
