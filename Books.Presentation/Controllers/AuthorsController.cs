@@ -14,17 +14,15 @@ namespace Books.Controllers
         [HttpGet]
         public IActionResult GetAuthors()
         {
-            try
-            {
-                var authors =
-                _service.AuthorService.GetAllAuthors(trackChanges: false);
-                return Ok(authors);
-            }
-            catch
-            {
-                return StatusCode(500, "Internal server errors");
-            }
+            var authors = _service.AuthorService.GetAllAuthors(trackChanges: false);
+            return Ok(authors);
+        }
 
+        [HttpGet("{id}")]
+        public IActionResult GetAuthor(int id) 
+        {
+            var company = _service.AuthorService.GetAuthor(id, trackChanges: false);
+            return Ok(company);
         }
 
     }

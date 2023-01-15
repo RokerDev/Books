@@ -10,5 +10,6 @@ namespace Contracts
     public interface IAuthorRepository
     {
         IEnumerable<Author> GetAllAuthors(bool trackChanges);
+        Author GetAuthor(int id, bool trackChanges);
     }
 }

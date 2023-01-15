@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Contracts;
+﻿using Contracts;
 using Service.Contracts;
 using System;
 using System.Collections.Generic;
@@ -15,14 +14,14 @@ namespace Service
         private readonly Lazy<IBookService> _bookService;
         private readonly Lazy<IBookAuthorService> _bookAuthorService;
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager
-        logger, IMapper mapper)
+        logger)
         {
             _authorService = new Lazy<IAuthorService>(() => new
-            AuthorService(repositoryManager, logger, mapper));
+            AuthorService(repositoryManager, logger));
             _bookService = new Lazy<IBookService>(() => new
-            BookService(repositoryManager, logger, mapper));
+            BookService(repositoryManager, logger));
             _bookAuthorService = new Lazy<IBookAuthorService>(() => new
-            BookAuthorService(repositoryManager, logger, mapper));
+            BookAuthorService(repositoryManager, logger));
         }
         public IAuthorService AuthorService => _authorService.Value;
         public IBookService BookService => _bookService.Value;

@@ -1,7 +1,6 @@
-﻿using AutoMapper;
-using Contracts;
-using Entities.Models;
+﻿using Contracts;
 using Service.Contracts;
+using Service.Converters;
 using Shared.DataTransferObjects;
 
 namespace Service
@@ -10,29 +9,29 @@ namespace Service
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
-        private readonly IMapper _mapper;
-        public AuthorService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+
+        public AuthorService(IRepositoryManager repository, ILoggerManager logger)
         {
             _repository = repository;
             _logger = logger;
-            _mapper = mapper;
+
         }
 
         public IEnumerable<AuthorDto> GetAllAuthors(bool trackChanges)
         {
-            try
-            {
-                var authors = _repository.Author.GetAllAuthors(trackChanges);
-                var authorsDto = authors.Select(c =>
-                new AuthorDto(c.Id, string.Join(' ', c.FirstName, c.LastName), c.BirthDate, c.Gender)).ToList();
+                 var authors = _repository.Author.GetAllAuthors(trackChanges);
+                var authorsDto = authors.Select(c => c.ToDto()).ToList();
                 return authorsDto;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetAllAuthors)} service method { ex }");
-                throw;
-            }
+        }
 
+        public AuthorDto GetAuthor(int id, bool trackChanges)
+        {
+            var author = _repository.Author.GetAuthor(id, trackChanges);
+            if (author is null)
+                throw new CompanyNotFoundException(id);
+
+            var authorDto = author.ToDto(); 
+            return authorDto;
         }
     }
 }
